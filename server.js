@@ -18,31 +18,18 @@ var pub = __dirname + '/public',
  * Set the 'client ID' and the 'client secret' to use on Instagram
  * @type {String}
  */
-var clientID = 'YOUR_CLIENT_ID',
-    clientSecret = 'YOUR_CLIENT_SECRET';
+var clientID = '0664dbbc6f764ebc8d4eb10168077b2b',
+    clientSecret = '31405ee20123420492b2a6892592487b';
 
 /**
  * Set the configuration
  */
 Instagram.set('client_id', clientID);
 Instagram.set('client_secret', clientSecret);
-Instagram.set('callback_url', 'http://YOUR_URL.com/callback');
-Instagram.set('redirect_uri', 'http://YOUR_URL.com');
+Instagram.set('callback_url', 'http://104.236.194.95:3700/callback');
+Instagram.set('redirect_uri', 'http://104.236.194.95:3700');
 Instagram.set('maxSockets', 10);
-
-/**
- * Uses the library "instagram-node-lib" to Subscribe to the Instagram API Real Time
- * with the tag "hashtag" lollapalooza
- * @type {String}
- */
-Instagram.subscriptions.subscribe({
-  object: 'tag',
-  object_id: 'lollapalooza',
-  aspect: 'media',
-  callback_url: 'http://YOUR_URL.com/callback',
-  type: 'subscription',
-  id: '#'
-});
+app.set('view engine', 'jade');
 
 /**
  * Uses the library "instagram-node-lib" to Subscribe to the Instagram API Real Time
@@ -51,23 +38,9 @@ Instagram.subscriptions.subscribe({
  */
 Instagram.subscriptions.subscribe({
   object: 'tag',
-  object_id: 'lollapalooza2013',
+  object_id: 'tagtotalmenterandomico',
   aspect: 'media',
-  callback_url: 'http://YOUR_URL.com/callback',
-  type: 'subscription',
-  id: '#'
-});
-
-/**
- * Uses the library "instagram-node-lib" to Subscribe to the Instagram API Real Time
- * with the tag "hashtag" lolla2013
- * @type {String}
- */
-Instagram.subscriptions.subscribe({
-  object: 'tag',
-  object_id: 'lolla2013',
-  aspect: 'media',
-  callback_url: 'http://YOUR_URL.com/callback',
+  callback_url: 'http://104.236.194.95:3700/callback',
   type: 'subscription',
   id: '#'
 });
@@ -116,7 +89,7 @@ app.get("/views", function(req, res){
  */
 io.sockets.on('connection', function (socket) {
   Instagram.tags.recent({
-      name: 'lollapalooza',
+      name: 'tagtotalmenterandomico',
       complete: function(data) {
         socket.emit('firstShow', { firstShow: data });
       }

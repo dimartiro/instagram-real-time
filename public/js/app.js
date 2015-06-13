@@ -1,11 +1,11 @@
 (function() {
-    var socket = io.connect('http://lollagram.herokuapp.com');
+    var socket = io.connect('http://104.236.194.95');
 
     /**
      * [Namespacing]
      */
     var Insta = Insta || {};
-    
+
     Insta.App = {
 
         /**
@@ -50,7 +50,7 @@
                     dataType: 'jsonp'
                 }).done(function (data) {
                     self.renderTemplate(data);
-                }); 
+                });
             });
         },
 
